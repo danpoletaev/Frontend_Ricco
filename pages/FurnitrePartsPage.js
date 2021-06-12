@@ -5,12 +5,14 @@ import {MaterialIcons} from '@expo/vector-icons';
 import { FAB } from 'react-native-paper';
 import { withNavigation } from 'react-navigation';
 import { Badge } from 'react-native-paper';
+import { Plane } from 'react-native-animated-spinkit';
 
 class FurniturePartsPage extends Component{
     constructor() {
         super();
         this.state = {
-            furniture: ''
+            furniture: '',
+            loaded: false,
         }
     }
 // ({route, navigation})
@@ -20,7 +22,7 @@ class FurniturePartsPage extends Component{
         fetch('https://riico-backend.herokuapp.com/furnitures/1')
             .then(response => response.json())
             .then(data => {
-                this.setState({furniture: data})
+                this.setState({furniture: data, loaded: true})
                 // alert(this.state.furniture.article)
             });
     }
@@ -56,6 +58,7 @@ class FurniturePartsPage extends Component{
 
         return (
             <View style={styles.container}>
+                    <Plane style={{position: 'absolute', bottom: '50%'}} animating={!this.state.loaded} color="#000" size={48}/>
                     <View pointerEvents={'none'} style={{ position: 'absolute', elevation: 40, bottom: 58, right: 18, zIndex: 2 }}>
                         <Badge danger>
                             <Text>2</Text>
@@ -70,13 +73,13 @@ class FurniturePartsPage extends Component{
                 {/*<Badge style={styles.badge}>3</Badge>*/}
                 <ScrollView contentContainerStyle={styles.mainContainer} alwaysBounceVertical={true}>
                     <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}>Relevant parts for: </Text>
-                    <View style={styles.furnitureCard}>
+                    {this.state.loaded && <View style={styles.furnitureCard}>
                         <View style={{display: 'flex', flexDirection: 'column'}}>
                             <Text style={{fontWeight: 'bold', fontSize: 18}}>{this.state.furniture.name}</Text>
                             <Text style={{fontSize: 12, marginTop: 10}}>Article #: {this.state.furniture.article}</Text>
                         </View>
                         <Image source={require('../assets/table.png')} style={styles.furnImg}/>
-                    </View>
+                    </View>}
 
                     {this.state.furniture.components && this.state.furniture.components.map((item) => {
                         return (
@@ -97,125 +100,6 @@ class FurniturePartsPage extends Component{
                             </TouchableOpacity>
                         )
                     })}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/Black_base.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Black Base Leveler</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 115988</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/CamLockNut.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Cam Lock Nut</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 110630</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/Cam_Angle.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Cam lock Nut Angle Pin</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 103091</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/Cam_screw.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Cam Lock screw</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 118331</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/Drawer_Front.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Drawer Front</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 113281</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/Drawer_rail.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Drawer rail</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 100365</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/Rod_Clip.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Rod Clip white</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 117793</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/Shelf_Pins.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Shelf Pins</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 110525</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*    /!*    Wood Dowel*!/*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*    this.props.navigation.navigate("Part Page")*/}
-                    {/*}}>*/}
-                    {/*    <View style={styles.cardContainer}>*/}
-                    {/*        <Image source={require('../assets/parts/Wood_Dowel.png')} style={styles.cardImg}/>*/}
-                    {/*        <Text style={styles.cardHeader}>Wood Dowel</Text>*/}
-                    {/*        <Text style={styles.partText}>Part #: 101350</Text>*/}
-                    {/*        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>*/}
-                    {/*            <MaterialIcons name="attach-money" size={18} color="black"/>*/}
-                    {/*            <Text>5.49</Text>*/}
-                    {/*        </View>*/}
-                    {/*    </View>*/}
-                    {/*    /!*    Wood Dowel*!/*/}
-                    {/*</TouchableOpacity>*/}
                 </ScrollView>
             </View>
         );
@@ -325,6 +209,10 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 40,
         zIndex: 5,
+    },
+    lottie: {
+        width: 100,
+        height: 100
     }
 });
 
