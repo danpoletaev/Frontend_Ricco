@@ -23,6 +23,7 @@ const Stack = createStackNavigator();
 
 class App extends Component {
     render () {
+        console.disableYellowBox = true;
         return (
             <NavigationContainer>
                 <Stack.Navigator

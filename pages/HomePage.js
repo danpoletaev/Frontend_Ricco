@@ -2,27 +2,20 @@ import React, { useState, useRef } from "react";
 import { StyleSheet, Text, View, Image, Pressable, ScrollView, TouchableOpacity, SafeAreaView, TextInput } from 'react-native';
 import { Alert, Modal } from "react-native";
 
-const HomePage = ({ navigation }) => {
+const HomePage = ({ navigation, route }) => {
     const [visible, setVisible] = useState(false);
     const [id_visible, setIdVisible] = useState(false);
     const [type_visible, setTypeVisible] = useState(false);
 
     const [text, onChangeText] = React.useState("Useless Text");
     const [number, onChangeNumber] = React.useState(null);
+    const [hide, setHide] = React.useState(false)
 
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Image source={require('../assets/logo.png')} style={styles.logo}/>
             <Text style={styles.text}>Scan QR of furniture: </Text>
-            {/*<TouchableOpacity onPress={() => {*/}
-            {/*    setVisible(true)*/}
-            {/*}}>*/}
-            {/*    <Image*/}
-            {/*        source={require('../assets/qr_code.png')}*/}
-            {/*        style={styles.qr_img}*/}
-            {/*    />*/}
-            {/*</TouchableOpacity>*/}
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -205,7 +198,7 @@ const HomePage = ({ navigation }) => {
                 ]}>
                 <Text style={styles.textButton}>Find furniture</Text>
             </Pressable>
-            <Pressable
+            {!hide && <Pressable
                 onPress={() => {
                     navigation.navigate('Login Page')
                 }}
@@ -218,7 +211,7 @@ const HomePage = ({ navigation }) => {
                     styles.button
                 ]}>
                 <Text style={styles.textButton}>Login</Text>
-            </Pressable>
+            </Pressable>}
         </ScrollView>
     );
 }

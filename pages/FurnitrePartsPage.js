@@ -1,34 +1,25 @@
-import React, {useState, useRef, Component} from "react";
+import React, {useState, useRef, Component, useEffect} from "react";
 import {StyleSheet, Text, View, Image, Pressable, ScrollView, TouchableOpacity} from 'react-native';
 import {Card, ListItem, Button, Icon} from 'react-native-elements'
 import {MaterialIcons} from '@expo/vector-icons';
 import { FAB } from 'react-native-paper';
-import { withNavigation } from 'react-navigation';
 import { Badge } from 'react-native-paper';
 import { Plane } from 'react-native-animated-spinkit';
 
-class FurniturePartsPage extends Component{
-    constructor() {
-        super();
-        this.state = {
-            furniture: '',
-            loaded: false,
-        }
-    }
-// ({route, navigation})
-    // const {scanned_data} = route.params;
+const FurniturePartsPage = ({route, navigation}) =>{
+    const [furniture, setFurniture] = useState(null)
+    const [loaded, setLoaded] = useState(false)
+    const [cart, setCart] = useState([])
 
-    componentDidMount() {
+    useEffect(()=>{
         fetch('https://riico-backend.herokuapp.com/furnitures/1')
             .then(response => response.json())
             .then(data => {
-                this.setState({furniture: data, loaded: true})
+                setFurniture(data)
+                setLoaded(true)
                 // alert(this.state.furniture.article)
             });
-    }
-
-
-    render () {
+    },[])
 
         const getImage = (id) => {
             const new_id = id % 11;
@@ -58,34 +49,34 @@ class FurniturePartsPage extends Component{
 
         return (
             <View style={styles.container}>
-                    <Plane style={{position: 'absolute', bottom: '50%'}} animating={!this.state.loaded} color="#000" size={48}/>
+                    <Plane style={{position: 'absolute', bottom: '50%'}} animating={!loaded} color="#000" size={48}/>
                     <View pointerEvents={'none'} style={{ position: 'absolute', elevation: 40, bottom: 58, right: 18, zIndex: 2 }}>
                         <Badge danger>
-                            <Text>2</Text>
+                            <Text>{cart.length}</Text>
                         </Badge>
                     </View>
                 <FAB
                     style={styles.fab}
                     icon="cart"
-                    onPress={() => this.props.navigation.navigate('Cart Page')}
+                    onPress={() => navigation.navigate('Cart Page', {cart: cart, setCart: setCart})}
                     color={"#fff"}
                 />
                 {/*<Badge style={styles.badge}>3</Badge>*/}
                 <ScrollView contentContainerStyle={styles.mainContainer} alwaysBounceVertical={true}>
                     <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}>Relevant parts for: </Text>
-                    {this.state.loaded && <View style={styles.furnitureCard}>
+                    {loaded && <View style={styles.furnitureCard}>
                         <View style={{display: 'flex', flexDirection: 'column'}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 18}}>{this.state.furniture.name}</Text>
-                            <Text style={{fontSize: 12, marginTop: 10}}>Article #: {this.state.furniture.article}</Text>
+                            <Text style={{fontWeight: 'bold', fontSize: 18}}>{furniture.name}</Text>
+                            <Text style={{fontSize: 12, marginTop: 10}}>Article #: {furniture.article}</Text>
                         </View>
                         <Image source={require('../assets/table.png')} style={styles.furnImg}/>
                     </View>}
 
-                    {this.state.furniture.components && this.state.furniture.components.map((item) => {
+                    {loaded && furniture.components.map((item) => {
                         return (
                             <TouchableOpacity key={item.id} onPress={() => {
-                                this.props.navigation.navigate("Part Page", {
-                                    part_details: item, id: item.id
+                                navigation.navigate("Part Page", {
+                                    part_details: item, id: item.id, setCart: setCart, cart: cart
                                 })
                             }}>
                                 <View style={styles.cardContainer}>
@@ -103,7 +94,6 @@ class FurniturePartsPage extends Component{
                 </ScrollView>
             </View>
         );
-    }
 }
 
 const styles = StyleSheet.create({
@@ -216,4 +206,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default withNavigation(FurniturePartsPage)
+export default FurniturePartsPage

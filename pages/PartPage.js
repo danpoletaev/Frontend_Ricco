@@ -1,85 +1,87 @@
-import React, {useState, useRef, Component} from "react";
+import React, {useState, useRef} from "react";
 import {StyleSheet, Text, View, Image, Pressable, ScrollView, TouchableOpacity} from 'react-native';
-import {Card, ListItem, Button, Icon} from 'react-native-elements'
-import {MaterialIcons} from '@expo/vector-icons';
-import { withNavigation } from 'react-navigation';
 
-class PartPage extends Component{
+const PartPage = ({route, navigation}) => {
 
-    render(){
-        const { id, part_details } = this.props.route.params;
+    const { id, part_details, setCart, cart } = route.params;
 
-        const getImage = (id) => {
-            const new_id = id % 11;
-            switch(new_id) {
-                case 1:
-                    return require('../assets/parts/Allen_Key.png')
-                case 2:
-                    return require('../assets/parts/Black_base.png')
-                case 3:
-                    return require('../assets/parts/CamLockNut.png')
-                case 4:
-                    return require('../assets/parts/Cam_Angle.png')
-                case 5:
-                    return require('../assets/parts/Cam_screw.png')
-                case 6:
-                    return require('../assets/parts/Drawer_Front.png')
-                case 7:
-                    return require('../assets/parts/Drawer_rail.png')
-                case 8:
-                    return require('../assets/parts/Rod_Clip.png')
-                case 9:
-                    return require('../assets/parts/Shelf_Pins.png')
-                case 10:
-                    return require('../assets/parts/Wood_Dowel.png')
-            }
+
+    const getImage = (id) => {
+        const new_id = id % 11;
+        switch(new_id) {
+            case 1:
+                return require('../assets/parts/Allen_Key.png')
+            case 2:
+                return require('../assets/parts/Black_base.png')
+            case 3:
+                return require('../assets/parts/CamLockNut.png')
+            case 4:
+                return require('../assets/parts/Cam_Angle.png')
+            case 5:
+                return require('../assets/parts/Cam_screw.png')
+            case 6:
+                return require('../assets/parts/Drawer_Front.png')
+            case 7:
+                return require('../assets/parts/Drawer_rail.png')
+            case 8:
+                return require('../assets/parts/Rod_Clip.png')
+            case 9:
+                return require('../assets/parts/Shelf_Pins.png')
+            case 10:
+                return require('../assets/parts/Wood_Dowel.png')
         }
-
-        return (
-            <View style={styles.container}>
-                <ScrollView>
-                    <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}> {part_details.name} </Text>
-                    <View style={styles.furnitureCard}>
-                        <View style={{display: 'flex', flexDirection: 'column'}}>
-                            <Text style={{fontWeight: 'bold', fontSize: 18, width: 100}}>{part_details.name}</Text>
-                            <Text style={{fontSize: 12, marginTop: 10}}>Part #: {part_details.product_id}</Text>
-                        </View>
-                        <Image source={getImage(id)} style={styles.furnImg}/>
-                    </View>
-                    <View style={{marginTop: 10}}>
-                        <Text style={{fontWeight: 'bold', fontSize: 18}}>Product Information:</Text>
-                        <View style={{marginLeft: 10, marginTop: 20}}>
-                            <Text style={styles.upperHeader}>• {part_details.name}</Text>
-                            <Text style={styles.upperHeader}>• IKEA Part #115988</Text>
-                            <Text style={styles.upperHeader}>• Dimensions:</Text>
-                            <View style={{marginLeft: 10}}>
-                                <Text style={styles.upperHeader}>• {part_details.dimension_eu}</Text>
-                                <Text style={styles.upperHeader}>• {part_details.dimension_us}</Text>
-                            </View>
-                            <Text style={{fontSize: 15, fontWeight: 'bold'}}>• Price: $ {part_details.price}</Text>
-                        </View>
-                    </View>
-                    <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                        <Pressable
-                            onPress={() => {
-                                alert('You added item to cart')
-                                this.props.navigation.goBack()
-                            }}
-                            style={({ pressed }) => [
-                                {
-                                    backgroundColor: pressed
-                                        ? 'gray'
-                                        : '#7ed957'
-                                },
-                                styles.button
-                            ]}>
-                            <Text style={styles.textButton}>Add to cart</Text>
-                        </Pressable>
-                    </View>
-                </ScrollView>
-            </View>
-        )
     }
+
+    return (
+        <View style={styles.container}>
+            <ScrollView>
+                <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}> {part_details.name} </Text>
+                <View style={styles.furnitureCard}>
+                    <View style={{display: 'flex', flexDirection: 'column'}}>
+                        <Text style={{fontWeight: 'bold', fontSize: 18, width: 100}}>{part_details.name}</Text>
+                        <Text style={{fontSize: 12, marginTop: 10}}>Part #: {part_details.product_id}</Text>
+                    </View>
+                    <Image source={getImage(id)} style={styles.furnImg}/>
+                </View>
+                <View style={{marginTop: 10}}>
+                    <Text style={{fontWeight: 'bold', fontSize: 18}}>Product Information:</Text>
+                    <View style={{marginLeft: 10, marginTop: 20}}>
+                        <Text style={styles.upperHeader}>• {part_details.name}</Text>
+                        <Text style={styles.upperHeader}>• IKEA Part #115988</Text>
+                        <Text style={styles.upperHeader}>• Dimensions:</Text>
+                        <View style={{marginLeft: 10}}>
+                            <Text style={styles.upperHeader}>• {part_details.dimension_eu}</Text>
+                            <Text style={styles.upperHeader}>• {part_details.dimension_us}</Text>
+                        </View>
+                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>• Price: $ {part_details.price}</Text>
+                    </View>
+                </View>
+                <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                    <Pressable
+                        onPress={() => {
+                            alert('You added item to cart')
+                            let obj = null
+                            const new_part_details = {
+                                ...part_details,
+                                amount: 1
+                            }
+                            setCart([...cart, new_part_details])
+                            navigation.goBack()
+                        }}
+                        style={({ pressed }) => [
+                            {
+                                backgroundColor: pressed
+                                    ? 'gray'
+                                    : '#7ed957'
+                            },
+                            styles.button
+                        ]}>
+                        <Text style={styles.textButton}>Add to cart</Text>
+                    </Pressable>
+                </View>
+            </ScrollView>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -131,4 +133,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default withNavigation(PartPage)
+export default PartPage

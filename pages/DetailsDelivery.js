@@ -27,6 +27,8 @@ const DetailsDelivery = ({route, navigation}) => {
     const [zip, setZip] = React.useState(null);
     const [email, setEmail] = React.useState(null);
 
+    const { price } = route.params
+
     return (
         <ScrollView
             contentContainerStyle={styles.container}
@@ -89,7 +91,7 @@ const DetailsDelivery = ({route, navigation}) => {
                 <Divider orientation="horizontal" style={{width: 300, marginBottom: 20, marginTop: 15}}/>
                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 10, paddingRight: 10}}>
                     <Text style={{fontWeight: 'bold', fontSize: 18}}>Total:</Text>
-                    <Text style={{fontWeight: 'bold', fontSize: 18}}>$ 12.42</Text>
+                    <Text style={{fontWeight: 'bold', fontSize: 18}}>$ {price}</Text>
                 </View>
                 <View style={{display: 'flex', alignItems: 'flex-end'}}>
                     <Pressable

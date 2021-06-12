@@ -1,4 +1,4 @@
-import {Animated, Image, SafeAreaView, Text, View, ScrollView} from 'react-native';
+import {Animated, Image, SafeAreaView, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 
 import {
@@ -38,7 +38,7 @@ const animateCell = ({hasValue, index, isFocused}) => {
     ]).start();
 };
 
-const AnimatedExample = () => {
+const AnimatedExample = ({navigation, route}) => {
     const [value, setValue] = useState('');
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -107,9 +107,13 @@ const AnimatedExample = () => {
                 textContentType="oneTimeCode"
                 renderCell={renderCell}
             />
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('Home')
+            }}>
             <View style={styles.nextButton}>
                 <Text style={styles.nextButtonText}>Verify</Text>
             </View>
+            </TouchableOpacity>
         </ScrollView>
     );
 };
