@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         width: 170,
-        height: 180,
+        height: 200,
         marginRight: 5,
         marginLeft: 5,
         backgroundColor: '#f2f2f2',

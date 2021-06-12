@@ -27,7 +27,7 @@ const BuyBackPage = ({route, navigation}) => {
 
     const [isChecked, setChecked] = useState(false);
 
-    const [email, setEmail] = useState(false);
+    const [email, setEmail] = useState(null);
     const [visible, setVisible] = useState(false)
 
     const getPrice = () => {
@@ -137,7 +137,19 @@ const BuyBackPage = ({route, navigation}) => {
                 <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 20, width: 300}}>You will get up to: ${getPrice()} </Text>
                 <Text style={{fontSize: 16, marginTop: 20, width: 300}}>When will you return your product? </Text>
                 <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
-                    <DateTimePicker
+                    {Platform.OS === 'android' &&
+                    <TouchableOpacity
+                        onPress={() => setShow(true)}
+                        style={{
+                            flex: 1,
+                            marginVertical: 10,
+                            padding: 10,
+                        }}
+                    >
+                        <Text style={{ fontSize: 16 }}>{date && date.toLocaleDateString()}</Text>
+                    </TouchableOpacity>
+                    }
+                    {(show || Platform.OS=='ios') && <DateTimePicker
                         style={{width: 120, backgroundColor: "white", justifyContent: 'center'}}
                         testID="dateTimePicker"
                         value={date}
@@ -145,7 +157,7 @@ const BuyBackPage = ({route, navigation}) => {
                         is24Hour={true}
                         display="default"
                         onChange={onChange}
-                    />
+                    />}
                 </View>
                     <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
                         <TouchableOpacity onPress={() => setChecked(!isChecked)}>
