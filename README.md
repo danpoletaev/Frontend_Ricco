@@ -3,7 +3,8 @@
 Team Ricco at GreenHack hackathon would love to introduce you its lovely child - App for buying Spare Parts. Ricco app is a mobile platform that helps people to buy spare parts for their furniture or sell it back to IKEA.
 ## Project Description:
 
-There will be project description...
+Materialistic and wasteful approach to furniture and goods in general is harming our planet and economy. Sometimes people get rid of the furniture that is in good condition, needs slight repair or misses one component. Oftentimes they get rid of the furniture without returning the unwanted furniture back to the producer or without recycling it properly. Most people are discouraged from doing so because the service that IKEA provides is complicated, requires manuals for the furniture that are usually lost. 
+The project itself is a mobile application for both Android and iOS platforms which aims to make IKEA service easier, faster and more accessible for their customers. The application allows users to ask for a specific spare part for that piece of furniture or sell the furniture back to IKEA. The application is a great tool for both IKEA and their customers, since it improves IKEA’s Second life for furniture program and helps people to save money. 
 
 ## Installation and running
 To successfully install and run Ricco app you would need to:
