@@ -45,7 +45,6 @@ Install Expo app either on Android or on iPhone:
 #### Make sure you have installed Node.js, npm and yarn
 
 ### Run:
-
 ```
 sudo npm install --unsave-perm -g expo-cli
 ```
