@@ -9,6 +9,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './pages/HomePage'
 import LoginPage from "./pages/LoginPage";
 import ConfirmPhone from "./pages/ConfirmPhone";
+import ScanQR from "./pages/ScanQR";
+import FurniturePartsMain from "./pages/FurniturePartsMain";
+import PartPage from "./pages/PartPage";
+import ScanBarCode from "./pages/ScanBarCode";
+import BuyBackPage from "./pages/BuyBackPage";
 
 const Stack = createStackNavigator();
 
@@ -33,10 +38,32 @@ export default function App() {
               name="Login Page"
               component={LoginPage}
               options={{headerShown:false}}/>
-           <Stack.Screen
+          <Stack.Screen
                name="Confirm Phone"
                component={ConfirmPhone}
                options={{headerShown:false}}/>
+          <Stack.Screen
+                name="Scan QR"
+                component={ScanQR}
+                options={{headerShown:false}}/>
+            <Stack.Screen
+                name="Scan BarCode"
+                component={ScanBarCode}
+                options={{headerShown:false}}/>
+          <Stack.Screen
+                name="Furniture Parts"
+                component={FurniturePartsMain}
+                options={{headerShown:false}}/>
+            <Stack.Screen
+                name="Part Page"
+                component={PartPage}
+                options={{headerShown:false}}
+            />
+            <Stack.Screen
+                name="BuyBack Page"
+                component={BuyBackPage}
+                options={{headerShown:false}}
+            />
         </Stack.Navigator>
       </NavigationContainer>
   );
