@@ -4,28 +4,57 @@ import {Card, ListItem, Button, Icon} from 'react-native-elements'
 import {MaterialIcons} from '@expo/vector-icons';
 
 const PartPage = ({route, navigation}) => {
+
+    const { id, part_details } = route.params;
+
+    const getImage = (id) => {
+        const new_id = id % 11;
+        switch(new_id) {
+            case 1:
+                return require('../assets/parts/Allen_Key.png')
+            case 2:
+                return require('../assets/parts/Black_base.png')
+            case 3:
+                return require('../assets/parts/CamLockNut.png')
+            case 4:
+                return require('../assets/parts/Cam_Angle.png')
+            case 5:
+                return require('../assets/parts/Cam_screw.png')
+            case 6:
+                return require('../assets/parts/Drawer_Front.png')
+            case 7:
+                return require('../assets/parts/Drawer_rail.png')
+            case 8:
+                return require('../assets/parts/Rod_Clip.png')
+            case 9:
+                return require('../assets/parts/Shelf_Pins.png')
+            case 10:
+                return require('../assets/parts/Wood_Dowel.png')
+        }
+    }
+
     return (
         <View style={styles.container}>
             <ScrollView>
-                <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}>Black Base Leveler </Text>
+                <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}> {part_details.name} </Text>
                 <View style={styles.furnitureCard}>
                     <View style={{display: 'flex', flexDirection: 'column'}}>
-                        <Text style={{fontWeight: 'bold', fontSize: 18, width: 100}}>Black Base Leveler</Text>
-                        <Text style={{fontSize: 12, marginTop: 10}}>Part #: 115988</Text>
+                        <Text style={{fontWeight: 'bold', fontSize: 18, width: 100}}>{part_details.name}</Text>
+                        <Text style={{fontSize: 12, marginTop: 10}}>Part #: {part_details.product_id}</Text>
                     </View>
-                    <Image source={require('../assets/parts/Black_base.png')} style={styles.furnImg}/>
+                    <Image source={getImage(id)} style={styles.furnImg}/>
                 </View>
                 <View style={{marginTop: 10}}>
                     <Text style={{fontWeight: 'bold', fontSize: 18}}>Product Information:</Text>
                     <View style={{marginLeft: 10, marginTop: 20}}>
-                        <Text style={styles.upperHeader}>• Black Base Leveler</Text>
+                        <Text style={styles.upperHeader}>• {part_details.name}</Text>
                         <Text style={styles.upperHeader}>• IKEA Part #115988</Text>
                         <Text style={styles.upperHeader}>• Dimensions:</Text>
                         <View style={{marginLeft: 10}}>
-                            <Text style={styles.upperHeader}>• 0.09 cm (L) x 0.06 cm (W) x 0.0 cm (D)</Text>
-                            <Text style={styles.upperHeader}>• 0.03 in (L) x 0.02 in (W) x 0.0 in (D)</Text>
+                            <Text style={styles.upperHeader}>• {part_details.dimension_eu}</Text>
+                            <Text style={styles.upperHeader}>• {part_details.dimension_us}</Text>
                         </View>
-                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>• Price: $5.49</Text>
+                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>• Price: $ {part_details.price}</Text>
                     </View>
                 </View>
                 <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
