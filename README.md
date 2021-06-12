@@ -20,7 +20,7 @@ git clone https://github.com/danpoletaev/Frontend_Ricco.git  <project_directory>
 Where <project_directory> is your desired folder to clone the repository into.
 
 ### 2. Running of the backend server on your machine
-###NOTE: You should not do it, because of our server is hosted on Heroku. Just go to Frontedn part and use it :)
+### NOTE: You should not do it, because of our server is hosted on Heroku. Just go to Frontedn part and use it :)
 
 The project's backend is written in Python with the usage of Flask web framework and an SQLite database.
 To install these, make sure that you have Python3.6 or higher and pip installed on your machine.
@@ -46,14 +46,14 @@ Finally, to run the server, execute this:
 (venv) python3 main.py
 ```
 
-### 2. Install Expo app on your mobile device
+### 3. Install Expo app on your mobile device
 Install Expo app either on Android or on iPhone:
 
 * App Store: https://apps.apple.com/us/app/expo-go/id982107779
 
 * Play Market: https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en&gl=US
 
-### 3. Install the requirements for the frontend client and run it
+### 4. Install the requirements for the frontend client and run it
 #### Make sure you have installed Node.js, npm and yarn
 
 ### Go to Frontend folder
