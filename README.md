@@ -30,11 +30,7 @@ Install Expo app either on Android or on iPhone:
 ### 3. Install the requirements for the frontend client and run it
 #### Make sure you have installed Node.js, npm and yarn
 
-### Go to Frontend folder
-```
-cd Frontend/
-```
-### and run:
+### Run:
 
 ```
 sudo npm install --unsave-perm -g expo-cli
