@@ -19,6 +19,20 @@ git clone https://github.com/danpoletaev/Frontend_Ricco.git  <project_directory>
 ```
 Where <project_directory> is your desired folder to clone the repository into.
 
+### 2. Install the requirements for the backend server
+
+The project's backend is written in Python with the usage of Flask web framework and an SQLite database.
+To install these, make sure that you have Python3.6 or higher and pip installed on your machine.
+It is also recommended to create a new virtual environment for the project, so make sure to execute these:
+
+```
+python3 -m venv venv
+```
+
+```
+source ./venv/bin/activate
+```
+
 
 ### 2. Install Expo app on your mobile device
 Install Expo app either on Android or on iPhone:
