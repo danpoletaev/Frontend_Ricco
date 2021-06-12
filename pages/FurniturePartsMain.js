@@ -2,23 +2,14 @@ import React, { useState, useRef } from "react";
 import { StyleSheet, Text, View, Image, Pressable, ScrollView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FurniturePartsPage from "./FurnitrePartsPage";
+import PartPage from "./PartPage";
 
 const Tab = createBottomTabNavigator();
 
 const FurniturePartsMain = ({ route, navigation }) => {
     const { scanned_data } = route.params;
     return (
-        <Tab.Navigator
-            tabBarOptions={{
-                activeTintColor: 'tomato',
-                inactiveTintColor: 'gray',
-                activeBackgroundColor: "#fff",
-                inactiveBackgroundColor: "#fff"
-            }}
-        >
-            <Tab.Screen name="Home" component={FurniturePartsPage} initialParams={{scanned_data}}/>
-            <Tab.Screen name="Settings" component={FurniturePartsPage} />
-        </Tab.Navigator>
+        <FurniturePartsPage/>
     );
 }
 

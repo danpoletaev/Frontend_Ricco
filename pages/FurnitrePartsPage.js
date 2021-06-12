@@ -2,13 +2,20 @@ import React, {useState, useRef} from "react";
 import {StyleSheet, Text, View, Image, Pressable, ScrollView, TouchableOpacity} from 'react-native';
 import {Card, ListItem, Button, Icon} from 'react-native-elements'
 import {MaterialIcons} from '@expo/vector-icons';
+import { FAB } from 'react-native-paper';
 
 const FurniturePartsPage = ({route, navigation}) => {
 
-    const {scanned_data} = route.params;
+    // const {scanned_data} = route.params;
 
     return (
         <View style={styles.container}>
+            <FAB
+                style={styles.fab}
+                icon="cart"
+                onPress={() => navigation.navigate('Cart Page')}
+                color={"#fff"}
+            />
             <ScrollView contentContainerStyle={styles.mainContainer} alwaysBounceVertical={true}>
                 <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}>Relevant parts for: </Text>
                 <View style={styles.furnitureCard}>
@@ -22,9 +29,9 @@ const FurniturePartsPage = ({route, navigation}) => {
                     navigation.navigate("Part Page")
                 }}>
                     <View style={styles.cardContainer}>
-                        <Image source={require('../assets/sofa.png')} style={styles.cardImg}/>
-                        <Text style={styles.cardHeader}>Hemnes Knobs</Text>
-                        <Text style={styles.partText}>Part #: 110215</Text>
+                        <Image source={require('../assets/parts/Allen_Key.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Allen Key</Text>
+                        <Text style={styles.partText}>Part #: 100001</Text>
                         <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
                             <MaterialIcons name="attach-money" size={18} color="black"/>
                             <Text>5.49</Text>
@@ -35,9 +42,9 @@ const FurniturePartsPage = ({route, navigation}) => {
                     navigation.navigate("Part Page")
                 }}>
                     <View style={styles.cardContainer}>
-                        <Image source={require('../assets/Bed.png')} style={styles.cardImg}/>
-                        <Text style={styles.cardHeader}>IKEA Leksvik Knobs</Text>
-                        <Text style={styles.partText}>Part #: 214121</Text>
+                        <Image source={require('../assets/parts/Black_base.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Black Base Leveler</Text>
+                        <Text style={styles.partText}>Part #: 115988</Text>
                         <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
                             <MaterialIcons name="attach-money" size={18} color="black"/>
                             <Text>5.49</Text>
@@ -48,9 +55,9 @@ const FurniturePartsPage = ({route, navigation}) => {
                     navigation.navigate("Part Page")
                 }}>
                     <View style={styles.cardContainer}>
-                        <Image source={require('../assets/Chair.png')} style={styles.cardImg}/>
-                        <Text style={styles.cardHeader}>Brimnes Handle</Text>
-                        <Text style={styles.partText}>Part #: 12214214</Text>
+                        <Image source={require('../assets/parts/CamLockNut.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Cam Lock Nut</Text>
+                        <Text style={styles.partText}>Part #: 110630</Text>
                         <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
                             <MaterialIcons name="attach-money" size={18} color="black"/>
                             <Text>5.49</Text>
@@ -61,9 +68,9 @@ const FurniturePartsPage = ({route, navigation}) => {
                     navigation.navigate("Part Page")
                 }}>
                     <View style={styles.cardContainer}>
-                        <Image source={require('../assets/Chair.png')} style={styles.cardImg}/>
-                        <Text style={styles.cardHeader}>Brimnes Handle</Text>
-                        <Text style={styles.partText}>Part #: 12214214</Text>
+                        <Image source={require('../assets/parts/Cam_Angle.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Cam lock Nut Angle Pin</Text>
+                        <Text style={styles.partText}>Part #: 103091</Text>
                         <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
                             <MaterialIcons name="attach-money" size={18} color="black"/>
                             <Text>5.49</Text>
@@ -74,9 +81,9 @@ const FurniturePartsPage = ({route, navigation}) => {
                     navigation.navigate("Part Page")
                 }}>
                     <View style={styles.cardContainer}>
-                        <Image source={require('../assets/Chair.png')} style={styles.cardImg}/>
-                        <Text style={styles.cardHeader}>Brimnes Handle</Text>
-                        <Text style={styles.partText}>Part #: 12214214</Text>
+                        <Image source={require('../assets/parts/Cam_screw.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Cam Lock screw</Text>
+                        <Text style={styles.partText}>Part #: 118331</Text>
                         <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
                             <MaterialIcons name="attach-money" size={18} color="black"/>
                             <Text>5.49</Text>
@@ -87,9 +94,9 @@ const FurniturePartsPage = ({route, navigation}) => {
                     navigation.navigate("Part Page")
                 }}>
                     <View style={styles.cardContainer}>
-                        <Image source={require('../assets/Chair.png')} style={styles.cardImg}/>
-                        <Text style={styles.cardHeader}>Brimnes Handle</Text>
-                        <Text style={styles.partText}>Part #: 12214214</Text>
+                        <Image source={require('../assets/parts/Drawer_Front.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Drawer Front</Text>
+                        <Text style={styles.partText}>Part #: 113281</Text>
                         <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
                             <MaterialIcons name="attach-money" size={18} color="black"/>
                             <Text>5.49</Text>
@@ -100,9 +107,9 @@ const FurniturePartsPage = ({route, navigation}) => {
                     navigation.navigate("Part Page")
                 }}>
                     <View style={styles.cardContainer}>
-                        <Image source={require('../assets/Chair.png')} style={styles.cardImg}/>
-                        <Text style={styles.cardHeader}>Brimnes Handle</Text>
-                        <Text style={styles.partText}>Part #: 12214214</Text>
+                        <Image source={require('../assets/parts/Drawer_rail.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Drawer rail</Text>
+                        <Text style={styles.partText}>Part #: 100365</Text>
                         <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
                             <MaterialIcons name="attach-money" size={18} color="black"/>
                             <Text>5.49</Text>
@@ -113,14 +120,42 @@ const FurniturePartsPage = ({route, navigation}) => {
                     navigation.navigate("Part Page")
                 }}>
                     <View style={styles.cardContainer}>
-                        <Image source={require('../assets/Chair.png')} style={styles.cardImg}/>
-                        <Text style={styles.cardHeader}>Brimnes Handle</Text>
-                        <Text style={styles.partText}>Part #: 12214214</Text>
+                        <Image source={require('../assets/parts/Rod_Clip.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Rod Clip white</Text>
+                        <Text style={styles.partText}>Part #: 117793</Text>
                         <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
                             <MaterialIcons name="attach-money" size={18} color="black"/>
                             <Text>5.49</Text>
                         </View>
                     </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate("Part Page")
+                }}>
+                    <View style={styles.cardContainer}>
+                        <Image source={require('../assets/parts/Shelf_Pins.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Shelf Pins</Text>
+                        <Text style={styles.partText}>Part #: 110525</Text>
+                        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
+                            <MaterialIcons name="attach-money" size={18} color="black"/>
+                            <Text>5.49</Text>
+                        </View>
+                    </View>
+                    {/*    Wood Dowel*/}
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    navigation.navigate("Part Page")
+                }}>
+                    <View style={styles.cardContainer}>
+                        <Image source={require('../assets/parts/Wood_Dowel.png')} style={styles.cardImg}/>
+                        <Text style={styles.cardHeader}>Wood Dowel</Text>
+                        <Text style={styles.partText}>Part #: 101350</Text>
+                        <View style={{display: 'flex', flexDirection: 'row', marginTop: 5}}>
+                            <MaterialIcons name="attach-money" size={18} color="black"/>
+                            <Text>5.49</Text>
+                        </View>
+                    </View>
+                    {/*    Wood Dowel*/}
                 </TouchableOpacity>
             </ScrollView>
         </View>
@@ -165,11 +200,11 @@ const styles = StyleSheet.create({
     },
     cardContainer: {
         width: 170,
-        height: 170,
-        backgroundColor: '#f2f2f2',
-        borderRadius: 20,
+        height: 180,
         marginRight: 5,
         marginLeft: 5,
+        backgroundColor: '#f2f2f2',
+        borderRadius: 20,
         marginBottom: 20,
         display: 'flex',
         alignItems: 'center',
@@ -183,9 +218,9 @@ const styles = StyleSheet.create({
         paddingBottom: 100
     },
     cardImg: {
-        width: 110,
-        height: 40,
-        marginTop: 25,
+        width: 70,
+        height: 70,
+        marginTop: 10,
     },
     cardHeader: {
         fontWeight: 'bold',
@@ -215,7 +250,15 @@ const styles = StyleSheet.create({
         width: 130,
         height: 100,
         marginLeft: 20
-    }
+    },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
+        zIndex: 1,
+        backgroundColor: '#7ed957'
+    },
 });
 
 export default FurniturePartsPage

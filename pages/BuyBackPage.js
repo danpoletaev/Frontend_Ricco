@@ -87,9 +87,12 @@ const BuyBackPage = ({route, navigation}) => {
                                 }}
                                 style={({ pressed }) => [
                                     {
-                                        borderColor: pressed
-                                            ? 'gray'
-                                            : '#7ed957'
+                                        backgroundColor: pressed
+                                            ? '#fff'
+                                            : '#000',
+                                        color: pressed
+                                            ? '#000'
+                                            : '#fff'
                                     },
                                     styles.modal_button
                                 ]}>
@@ -149,13 +152,13 @@ const BuyBackPage = ({route, navigation}) => {
                             <View style={[
                                 styles.checkbox, isChecked ? styles.back_selected : styles.back
                             ]}>
-                                <Image source={require('../assets/check.png')} style={styles.furnImg}/>
+                                <Image source={require('../assets/check.png')} style={styles.logo_img}/>
                             </View>
                         </TouchableOpacity>
                         <Text style={{marginLeft: 10}}>I agree with terms and conditions</Text>
                     </View>
                     {isChecked && <View style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingBottom: 200}}>
-                        <Text style={{marginTop: 20}}>Please, enter your email to receive your estimate: </Text>
+                        <Text style={{marginTop: 20, marginBottom: 10}}>Please, enter your email to receive your estimate: </Text>
                         <SafeAreaView>
                             <TextInput
                                 style={styles.input}
@@ -171,7 +174,10 @@ const BuyBackPage = ({route, navigation}) => {
                                 {
                                     backgroundColor: pressed
                                         ? '#fff'
-                                        : 'gray'
+                                        : '#000',
+                                    color: pressed
+                                        ? '#000'
+                                        : '#fff'
                                 },
                                 styles.button
                             ]}>
@@ -220,7 +226,7 @@ const styles = StyleSheet.create({
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: '#7ed957',
+        color: '#fff',
     },
     cardContainer: {
         width: 120,
@@ -282,6 +288,10 @@ const styles = StyleSheet.create({
         height: 80,
     },
     furnImg: {
+        width: 80,
+        height: 50,
+    },
+    logo_img: {
         width: 20,
         height: 20,
     },
@@ -314,7 +324,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 200,
         padding: 10,
-        borderColor: '#7ed957'
+        borderColor: '#d3d3d3'
     },
     centeredView: {
         flex: 1,

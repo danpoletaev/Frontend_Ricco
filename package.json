@@ -28,6 +28,7 @@
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-modal-datetime-picker": "^10.0.0",
+    "react-native-paper": "^4.9.1",
     "react-native-phone-number-input": "^2.1.0",
     "react-native-qrcode-scanner": "^1.5.4",
     "react-native-reanimated": "~2.1.0",

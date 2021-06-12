@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        backgroundColor: '#7ed957'
         // justifyContent: 'center',
     },
     logo: {

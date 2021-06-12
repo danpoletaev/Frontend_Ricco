@@ -7,19 +7,19 @@ const PartPage = ({route, navigation}) => {
     return (
         <View style={styles.container}>
             <ScrollView>
-                <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}>Relevant parts for: </Text>
+                <Text style={{fontWeight: 'bold', fontSize: 25, marginTop: 50}}>Black Base Leveler </Text>
                 <View style={styles.furnitureCard}>
                     <View style={{display: 'flex', flexDirection: 'column'}}>
-                        <Text style={{fontWeight: 'bold', fontSize: 18}}>BEKANT</Text>
-                        <Text style={{fontSize: 12, marginTop: 10}}>Part #: 492.822.82</Text>
+                        <Text style={{fontWeight: 'bold', fontSize: 18, width: 100}}>Black Base Leveler</Text>
+                        <Text style={{fontSize: 12, marginTop: 10}}>Part #: 115988</Text>
                     </View>
-                    <Image source={require('../assets/sofa.png')} style={styles.furnImg}/>
+                    <Image source={require('../assets/parts/Black_base.png')} style={styles.furnImg}/>
                 </View>
                 <View style={{marginTop: 10}}>
                     <Text style={{fontWeight: 'bold', fontSize: 18}}>Product Information:</Text>
                     <View style={{marginLeft: 10, marginTop: 20}}>
-                        <Text style={styles.upperHeader}>• IKEA Drawer Rail Screws</Text>
-                        <Text style={styles.upperHeader}>• IKEA Part #100365</Text>
+                        <Text style={styles.upperHeader}>• Black Base Leveler</Text>
+                        <Text style={styles.upperHeader}>• IKEA Part #115988</Text>
                         <Text style={styles.upperHeader}>• Dimensions:</Text>
                         <View style={{marginLeft: 10}}>
                             <Text style={styles.upperHeader}>• 0.09 cm (L) x 0.06 cm (W) x 0.0 cm (D)</Text>
@@ -32,6 +32,7 @@ const PartPage = ({route, navigation}) => {
                     <Pressable
                         onPress={() => {
                             alert('You added item to cart')
+                            navigation.goBack()
                         }}
                         style={({ pressed }) => [
                             {
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     },
     furnImg: {
         width: 120,
-        height: 50,
+        height: 120,
         marginLeft: 20
     },
     upperHeader: {

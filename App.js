@@ -14,6 +14,10 @@ import FurniturePartsMain from "./pages/FurniturePartsMain";
 import PartPage from "./pages/PartPage";
 import ScanBarCode from "./pages/ScanBarCode";
 import BuyBackPage from "./pages/BuyBackPage";
+import CartPage from "./pages/CartPage";
+import FurniturePartsPage from "./pages/FurnitrePartsPage";
+import DetailsDelivery from "./pages/DetailsDelivery";
+import SuccessfullyPage from "./pages/Successfully";
 
 const Stack = createStackNavigator();
 
@@ -30,7 +34,8 @@ export default function App() {
               name="Home"
               component={HomeScreen}
               screenOptions={{
-                headerShown: false
+                headerShown: false,
+                  backgroundColor: '#7ed957'
           }}
               options={{headerShown:false}}
           />
@@ -52,7 +57,7 @@ export default function App() {
                 options={{headerShown:false}}/>
           <Stack.Screen
                 name="Furniture Parts"
-                component={FurniturePartsMain}
+                component={FurniturePartsPage}
                 options={{headerShown:false}}/>
             <Stack.Screen
                 name="Part Page"
@@ -62,6 +67,21 @@ export default function App() {
             <Stack.Screen
                 name="BuyBack Page"
                 component={BuyBackPage}
+                options={{headerShown:false}}
+            />
+            <Stack.Screen
+                name="Cart Page"
+                component={CartPage}
+                options={{headerShown:false}}
+            />
+            <Stack.Screen
+                name="Details Page"
+                component={DetailsDelivery}
+                options={{headerShown:false}}
+            />
+            <Stack.Screen
+                name="Success Page"
+                component={SuccessfullyPage}
                 options={{headerShown:false}}
             />
         </Stack.Navigator>
